@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  flask_api:
+    image: ahmadammari/msgraph_ai_assistant:flask-api-amd64
+    container_name: flask_api
+    environment:
+      - FLASK_ENV=development
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./config.cfg:/app/config.cfg
+
+  streamlit_gui:
+    image: ahmadammari/msgraph_ai_assistant:streamlit-gui-amd64
+    container_name: streamlit_gui
+    environment:
+      - BASE_URL=http://flask_api:5000
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./config.cfg:/app/config.cfg
+    depends_on:
+      - flask_api
