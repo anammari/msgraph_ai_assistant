@@ -53,7 +53,7 @@ Follow these steps to build, tag, and push the Docker images to Docker Hub.
      ```
 
 4. **Verify the Images on Docker Hub**:
-   - Go to your Docker Hub repository: [https://hub.docker.com/r/<your-docker-hub-username>/msgraph_ai_assistant](https://hub.docker.com/r/ahmadammari/msgraph_ai_assistant).
+   - Go to your Docker Hub repository: [https://hub.docker.com/r/your-docker-hub-username/msgraph_ai_assistant](https://hub.docker.com/r/ahmadammari/msgraph_ai_assistant).
    - Ensure the images `flask-api-amd64` and `streamlit-gui-amd64` are listed.
 
 ---
