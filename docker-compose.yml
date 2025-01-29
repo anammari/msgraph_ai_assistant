@@ -2,19 +2,25 @@ version: '3.8'
 
 services:
   flask_api:
+    platform: linux/x86_64
     image: ahmadammari/msgraph_ai_assistant:flask-api-amd64
     container_name: flask_api
     environment:
       - FLASK_ENV=development
+      - FLASK_RUN_HOST=0.0.0.0
     ports:
-      - "5000:5000"
+      - "5001:5000"
     volumes:
       - ./config.cfg:/app/config.cfg
+    networks:
+      - app-network
 
   streamlit_gui:
+    platform: linux/x86_64
     image: ahmadammari/msgraph_ai_assistant:streamlit-gui-amd64
     container_name: streamlit_gui
     environment:
+      - FLASK_RUN_HOST=0.0.0.0
       - BASE_URL=http://flask_api:5000
     ports:
       - "8501:8501"
@@ -22,3 +28,9 @@ services:
       - ./config.cfg:/app/config.cfg
     depends_on:
       - flask_api
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

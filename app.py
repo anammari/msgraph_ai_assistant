@@ -134,4 +134,4 @@ async def process_option(option, search_term=''):
         return {'error': 'Invalid option.'}, 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)

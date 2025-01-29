@@ -33,7 +33,7 @@ gemini_1_5_flash = 'gemini-1.5-flash-8b'
 Settings.llm = Gemini(model='models/gemini-2.0-flash-exp')
 
 # Define the base URL for the Flask REST API
-BASE_URL = "http://127.0.0.1:5000"
+BASE_URL = os.environ.get("BASE_URL", "http://127.0.0.1:5000")
 
 # Define the function declarations for the REST API interactions
 display_access_token_declaration = types.FunctionDeclaration(
